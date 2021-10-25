@@ -28,7 +28,7 @@ public class UIMANAGER : MonoBehaviour
     }
     public void SetTimer(float time)
     {
-        timerText.text = "Timer" + time;
+        timerText.text = "Timer" + time.ToString("F1");
     }
 }
 

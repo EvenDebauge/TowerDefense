@@ -22,6 +22,11 @@ public class CameraAction : MonoBehaviour
             if(Physics.Raycast(cameraTransform.position, worldPos - cameraTransform.position, out RaycastHit hit))
             {
                 Debug.Log(hit.transform.name);
+                TowerBase tower = hit.transform.GetComponent<TowerBase>();
+                if(tower != null)
+                {
+                    tower.Upgrade();
+                }
             }
         }
     }
