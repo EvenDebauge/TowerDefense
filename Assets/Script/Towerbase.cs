@@ -11,6 +11,8 @@ public class TowerBase : MonoBehaviour
     private float fireRate { get; set; } = 0.1f;
     private float currentfireRate { get; set; } = 0.0f;
 
+    private bool canShoot { get; set; } = true;
+
     private List<Ennemy> enemies { get; set; } = null;
 
   
@@ -24,7 +26,22 @@ public class TowerBase : MonoBehaviour
 
     private void Update()
     {
-
+        if(!canShoot)
+        {
+            currentfireRate += Time.deltaTime;
+            if ( currentfireRate >= fireRate)
+            {
+                currentfireRate = 0;
+                canShoot = true;
+            }
+            return;
+        }
+        if( enemies!= null && enemies.Count> 0)
+        {
+            Destroy(enemies[0].gameObject);
+            enemies.RemoveAt(0);
+            canShoot = false;
+        }
     }
  
 
