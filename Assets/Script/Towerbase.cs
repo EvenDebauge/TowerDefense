@@ -26,23 +26,7 @@ public class TowerBase : MonoBehaviour
     {
 
     }
-      private void OnTriggerEnter(Collider other)
-    {
-        Ennemy enemy =  other.GetComponent<Ennemy>();
-        if(enemy != null)
-        {
-            enemies.Add(enemy);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Ennemy enemy = other.GetComponent<Ennemy>();
-        if (enemy != null)
-        {
-            enemies.Remove(enemy);
-        }
-    }
+ 
 
     public void Upgrade()
     {
@@ -53,6 +37,17 @@ public class TowerBase : MonoBehaviour
 
         Instantiate(upgrade, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    public void AddEnemy(Ennemy enemy)
+    {
+        enemies.Add(enemy);
+
+    }
+
+    public void RemoveEnemy(Ennemy enemy)
+    {
+        enemies.Remove(enemy);
     }
 
 }
